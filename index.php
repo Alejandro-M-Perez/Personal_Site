@@ -16,6 +16,12 @@ error_reporting(E_ALL);
 require __DIR__ . '/config/site.php';
 $SECTIONS = require __DIR__ . '/config/sections.php';
 
+// Force default to About if no section is specified
+if (!isset($_GET['s']) || $_GET['s'] === '') {
+  header('Location: /?s=home', true, 302);
+  exit;
+}
+
 // Determine active section (default: research)
 $activeKey = $_GET['s'] ?? $SITE['default_section'];
 if (!isset($SECTIONS[$activeKey])) {
