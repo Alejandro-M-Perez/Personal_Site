@@ -23,7 +23,7 @@ body{
 .sidebar{
   width: var(--sidebar-width);
   border-right: 1px solid var(--rule-light);
-  padding: 18px 14px;
+  padding: 18px 18px;
   position: sticky;
   top: 0;
   height: 100vh;
