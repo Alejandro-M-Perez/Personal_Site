@@ -130,7 +130,7 @@ body{
 .experience-layout{
   display:flex;
   gap: 24px;
-  align-items:flex-start;
+  align-items: stretch;
 }
 
 .experience-main{
@@ -140,6 +140,7 @@ body{
 
 .experience-timeline{
   flex: 0 0 280px;
+  display: flex;
 }
 
 .timeline-panel{
@@ -148,6 +149,9 @@ body{
   border: 1px solid var(--rule-light);
   padding: 10px 12px 12px 12px;
   background: #fff;
+  height: calc(100vh - 36px);
+  display: flex;
+  flex-direction: column;
 }
 
 .timeline-panel summary{
@@ -163,6 +167,9 @@ body{
 .timeline{
   margin-top: 10px;
   font-family: "Courier New", Courier, monospace;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .timeline__range{
@@ -174,7 +181,7 @@ body{
 
 .timeline__track{
   position: relative;
-  height: var(--timeline-height, 320px);
+  height: 100%;
   border-left: 2px solid #000;
   margin-top: 10px;
   padding-left: 18px;
@@ -247,6 +254,7 @@ body{
 
   .timeline-panel{
     position: static;
+    height: auto;
   }
 }
 

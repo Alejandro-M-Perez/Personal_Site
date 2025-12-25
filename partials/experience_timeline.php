@@ -57,13 +57,14 @@ if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutab
   $cursor = $minStart->modify('first day of this month');
   while ($cursor <= $maxEnd) {
     $pct = (($cursor->getTimestamp() - $minStart->getTimestamp()) / $rangeSeconds) * 100;
+    $pos = 100 - $pct;
     if ($cursor->format('m') === '01') {
       $yearDots[] = [
-        "pct" => $pct,
+        "pct" => $pos,
         "label" => $cursor->format('Y'),
       ];
     } else {
-      $monthDots[] = ["pct" => $pct];
+      $monthDots[] = ["pct" => $pos];
     }
     $monthCount++;
     $cursor = $cursor->modify('+1 month');
@@ -104,11 +105,12 @@ $roleCount = max(1, count($timeline));
               $spanPct = (($end->getTimestamp() - $start->getTimestamp()) / $rangeSeconds) * 100;
             }
             $spanPct = max($spanPct, 1.5);
+            $startPos = 100 - ($startPct + $spanPct);
             $hue = (int) round(($item["index"] * (360 / $roleCount)) % 360);
             $color = "hsl(" . $hue . ", 70%, 40%)";
           ?>
           <div class="timeline__segment"
-               style="--start: <?= number_format($startPct, 2, '.', '') ?>; --span: <?= number_format($spanPct, 2, '.', '') ?>; --seg-color: <?= h($color) ?>;">
+               style="--start: <?= number_format($startPos, 2, '.', '') ?>; --span: <?= number_format($spanPct, 2, '.', '') ?>; --seg-color: <?= h($color) ?>;">
             <span class="timeline__segment-line"></span>
             <span class="timeline__segment-label"><?= h($item["role"]["title"]) ?></span>
           </div>

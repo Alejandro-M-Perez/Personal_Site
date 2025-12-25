@@ -24,6 +24,40 @@ $roles = [
   ],
 ];
 
+// Sort experiences by start date (chronological).
+$parseDate = static function (string $value): ?DateTimeImmutable {
+  $date = DateTimeImmutable::createFromFormat('m/d/Y', trim($value));
+  return $date === false ? null : $date;
+};
+
+$parseRange = static function (string $dates) use ($parseDate): array {
+  $parts = preg_split('/\s*–\s*/u', $dates);
+  if (!$parts || count($parts) !== 2) {
+    return [null, null];
+  }
+
+  $start = $parseDate($parts[0]);
+  $endRaw = strtolower(trim($parts[1]));
+  $end = $endRaw === 'present' ? new DateTimeImmutable('today') : $parseDate($parts[1]);
+
+  return [$start, $end];
+};
+
+usort($roles, static function (array $a, array $b) use ($parseRange): int {
+  [$startA] = $parseRange($a["dates"]);
+  [$startB] = $parseRange($b["dates"]);
+  if (!$startA && !$startB) {
+    return 0;
+  }
+  if (!$startA) {
+    return 1;
+  }
+  if (!$startB) {
+    return -1;
+  }
+  return $startA <=> $startB;
+});
+
 ?>
 <section class="paper-section experience-section">
   <div class="experience-layout">
