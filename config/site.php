@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 $SITE = [
+  "default_section" => "home",
   "name" => "Alejandro Perez",
   "tagline" => "Engineering student and AI researcher with a focus on robotics and machine learning.",
   "location" => "San Antonio, TX",
