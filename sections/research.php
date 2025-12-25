@@ -5,7 +5,7 @@ declare(strict_types=1);
 $projects = [
   [
     "title" => "AI Project Manager",
-    "body"  => "Worked with Dr. Kai and a graduate student to evaluate LLM performance for construction project management, using Minecraft to simulate construction activities. Later wrote a conference paper discussing results.",
+    "body"  => "Worked with Dr. Cai and a graduate student to evaluate LLM performance for construction project management, using Minecraft to simulate construction activities. Later wrote a conference paper discussing results.",
     "links" => [
       ["label" => "Download Paper", "href" => "/downloads/ai-project-manager-paper.pdf"],
       ["label" => "View Project",   "href" => "/projects/ai-project-manager"],
@@ -16,7 +16,7 @@ $projects = [
   ],
   [
     "title" => "AI Construction Lab",
-    "body"  => "Worked with Dr. Kai and a PhD student to develop a simulated environment for a mobile manipulator to train brick-laying behavior. Included point cloud and RGB data to simulate an RGB-D camera. Wrote a Python script using OpenGL to extract and save data for training; developed a control system using simulation data.",
+    "body"  => "Worked with Dr. Cai and a PhD student to develop a simulated environment for a mobile manipulator to train brick-laying behavior. Included point cloud and RGB data to simulate an RGB-D camera. Wrote a Python script using OpenGL to extract and save data for training; developed a control system using simulation data.",
     "links" => [
       ["label" => "Download Code",  "href" => "https://github.com/yourname/ai-construction-lab"],
       ["label" => "View Dataset",   "href" => "/projects/ai-construction-lab"],
