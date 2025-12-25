@@ -21,6 +21,6 @@ declare(strict_types=1);
   <p>
     I am a mechanical engineering student at <?= h($SITE["university"]) ?> focused on robotics, embedded systems,
     and machine learning. This site is formatted to present research, projects, and
-    artifacts (papers, code, CAD).
+    artifacts (papers, videos, code, CAD).
   </p>
 </section>
