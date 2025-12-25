@@ -12,6 +12,10 @@ declare(strict_types=1);
   <hr class="rule rule--light" />
 </header>
 
+<section class="paper-section photo-banner">
+  <div class="photo-banner__placeholder">Photo banner placeholder</div>
+</section>
+
 <section class="paper-section">
   <h2>About Me</h2>
   <p>
