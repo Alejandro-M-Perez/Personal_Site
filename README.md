@@ -1,7 +1,7 @@
 # Personal Site
 
 to do:
-- Add timeline to experiences
+- fix timeline in experiences
 - Add images to home page
 - Add drop down feature to research
 
