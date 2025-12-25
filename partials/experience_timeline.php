@@ -56,15 +56,14 @@ $monthCount = 0;
 if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable) {
   $cursor = $minStart->modify('first day of this month');
   while ($cursor <= $maxEnd) {
-    $pct = (($cursor->getTimestamp() - $minStart->getTimestamp()) / $rangeSeconds) * 100;
-    $pos = 100 - $pct;
+    $pctFromTop = (($maxEnd->getTimestamp() - $cursor->getTimestamp()) / $rangeSeconds) * 100;
     if ($cursor->format('m') === '01') {
       $yearDots[] = [
-        "pct" => $pos,
+        "pct" => $pctFromTop,
         "label" => $cursor->format('Y'),
       ];
     } else {
-      $monthDots[] = ["pct" => $pos];
+      $monthDots[] = ["pct" => $pctFromTop];
     }
     $monthCount++;
     $cursor = $cursor->modify('+1 month');
@@ -98,14 +97,13 @@ $roleCount = max(1, count($timeline));
           <?php
             $start = $item["start"];
             $end = $item["end"];
-            $startPct = 0.0;
+            $startPos = 0.0;
             $spanPct = 0.0;
-            if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $minStart instanceof DateTimeImmutable) {
-              $startPct = (($start->getTimestamp() - $minStart->getTimestamp()) / $rangeSeconds) * 100;
+            if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable) {
+              $startPos = (($maxEnd->getTimestamp() - $end->getTimestamp()) / $rangeSeconds) * 100;
               $spanPct = (($end->getTimestamp() - $start->getTimestamp()) / $rangeSeconds) * 100;
             }
             $spanPct = max($spanPct, 1.5);
-            $startPos = 100 - ($startPct + $spanPct);
             $hue = (int) round(($item["index"] * (360 / $roleCount)) % 360);
             $color = "hsl(" . $hue . ", 70%, 40%)";
             $offset = max(0.0, (12.0 * (1 - min(1.0, $spanPct / 100))));
