@@ -107,9 +107,13 @@ $roleCount = max(1, count($timeline));
             $hue = (int) round(($item["index"] * (360 / $roleCount)) % 360);
             $color = "hsl(" . $hue . ", 70%, 40%)";
             $offset = max(0.0, (12.0 * (1 - min(1.0, $spanPct / 100))));
+            $lane = $item["index"] % 4;
+            $laneOffset = $lane * 8;
+            $labelOffsets = [-18, -6, 6, 18];
+            $labelOffset = $labelOffsets[$lane];
           ?>
           <div class="timeline__segment"
-               style="--start: <?= number_format($startPos, 2, '.', '') ?>; --span: <?= number_format($spanPct, 2, '.', '') ?>; --seg-color: <?= h($color) ?>; --seg-offset: <?= number_format($offset, 2, '.', '') ?>px;">
+               style="--start: <?= number_format($startPos, 2, '.', '') ?>; --span: <?= number_format($spanPct, 2, '.', '') ?>; --seg-color: <?= h($color) ?>; --seg-offset: <?= number_format($offset, 2, '.', '') ?>px; --lane-offset: <?= (int) $laneOffset ?>px; --label-offset: <?= (int) $labelOffset ?>px;">
             <span class="timeline__segment-line"></span>
             <span class="timeline__segment-label">
               <span class="timeline__segment-dot" style="--seg-color: <?= h($color) ?>;"></span>
