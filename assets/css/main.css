@@ -139,7 +139,7 @@ body{
 }
 
 .experience-timeline{
-  flex: 0 0 240px;
+  flex: 0 0 280px;
 }
 
 .timeline-panel{
@@ -162,6 +162,7 @@ body{
 
 .timeline{
   margin-top: 10px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .timeline__range{
@@ -173,45 +174,65 @@ body{
 
 .timeline__track{
   position: relative;
-  height: 360px;
+  height: var(--timeline-height, 320px);
   border-left: 2px solid #000;
   margin-top: 10px;
-  padding-left: 12px;
+  padding-left: 18px;
 }
 
-.timeline__bar{
+.timeline__dot{
   position: absolute;
-  left: 0;
+  left: -5px;
+  top: calc(var(--pos) * 1%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8c8c8c;
+  transform: translateY(-50%);
+}
+
+.timeline__dot--year{
+  width: 10px;
+  height: 10px;
+  background: #000;
+}
+
+.timeline__dot-label{
+  position: absolute;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #000;
+}
+
+.timeline__segment{
+  position: absolute;
+  left: 6px;
   right: 0;
   top: calc(var(--start) * 1%);
   height: calc(var(--span) * 1%);
-  min-height: 16px;
-  padding-left: 14px;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
+  min-height: 14px;
 }
 
-.timeline__bar-fill{
+.timeline__segment-line{
   position: absolute;
-  left: -2px;
+  left: 0;
   top: 0;
   bottom: 0;
-  width: 8px;
+  width: 6px;
   border-radius: 3px;
-  background: var(--bar-color);
+  background: var(--seg-color);
 }
 
-.timeline__label{
-  font-size: 0.85rem;
+.timeline__segment-label{
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.78rem;
   line-height: 1.15;
-}
-
-.timeline__dates{
-  font-size: 0.8rem;
-  color: #333;
-  line-height: 1.1;
+  color: #111;
 }
 
 @media (max-width: 900px){
@@ -226,10 +247,6 @@ body{
 
   .timeline-panel{
     position: static;
-  }
-
-  .timeline__track{
-    height: 260px;
   }
 }
 

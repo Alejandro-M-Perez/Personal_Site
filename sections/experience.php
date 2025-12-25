@@ -1,24 +1,6 @@
 <?php
 declare(strict_types=1);
 
-$parseDate = static function (string $value): ?DateTimeImmutable {
-  $date = DateTimeImmutable::createFromFormat('m/d/Y', trim($value));
-  return $date === false ? null : $date;
-};
-
-$parseRange = static function (string $dates) use ($parseDate): array {
-  $parts = preg_split('/\s*–\s*/u', $dates);
-  if (!$parts || count($parts) !== 2) {
-    return [null, null];
-  }
-
-  $start = $parseDate($parts[0]);
-  $endRaw = strtolower(trim($parts[1]));
-  $end = $endRaw === 'present' ? new DateTimeImmutable('today') : $parseDate($parts[1]);
-
-  return [$start, $end];
-};
-
 $roles = [
   [
     "title" => "BW Design Group — Controls Integration Engineer (Full-time)",
@@ -42,31 +24,6 @@ $roles = [
   ],
 ];
 
-$timeline = [];
-$minStart = null;
-$maxEnd = null;
-foreach ($roles as $idx => $role) {
-  [$start, $end] = $parseRange($role["dates"]);
-  if ($start instanceof DateTimeImmutable && ($minStart === null || $start < $minStart)) {
-    $minStart = $start;
-  }
-  if ($end instanceof DateTimeImmutable && ($maxEnd === null || $end > $maxEnd)) {
-    $maxEnd = $end;
-  }
-  $timeline[] = [
-    "role" => $role,
-    "start" => $start,
-    "end" => $end,
-    "index" => $idx,
-  ];
-}
-
-$palette = ["#0f5c7a", "#b33b24", "#3b7a3b", "#6b4e9b", "#a36a00"];
-$rangeSeconds = 1;
-if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable) {
-  $rangeSeconds = max(1, $maxEnd->getTimestamp() - $minStart->getTimestamp());
-}
-
 ?>
 <section class="paper-section experience-section">
   <div class="experience-layout">
@@ -81,38 +38,6 @@ if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutab
       <?php endforeach; ?>
     </div>
 
-    <aside class="experience-timeline">
-      <details class="timeline-panel" open>
-        <summary>Timeline</summary>
-        <div class="timeline">
-          <div class="timeline__range">
-            <span><?= $minStart ? h($minStart->format('M Y')) : 'Start' ?></span>
-            <span><?= $maxEnd ? h($maxEnd->format('M Y')) : 'Present' ?></span>
-          </div>
-          <div class="timeline__track">
-            <?php foreach ($timeline as $item): ?>
-              <?php
-                $start = $item["start"];
-                $end = $item["end"];
-                $startPct = 0.0;
-                $spanPct = 0.0;
-                if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $minStart instanceof DateTimeImmutable) {
-                  $startPct = (($start->getTimestamp() - $minStart->getTimestamp()) / $rangeSeconds) * 100;
-                  $spanPct = (($end->getTimestamp() - $start->getTimestamp()) / $rangeSeconds) * 100;
-                }
-                $spanPct = max($spanPct, 2.0);
-                $color = $palette[$item["index"] % count($palette)];
-              ?>
-              <div class="timeline__bar"
-                   style="--start: <?= number_format($startPct, 2, '.', '') ?>; --span: <?= number_format($spanPct, 2, '.', '') ?>; --bar-color: <?= h($color) ?>;">
-                <span class="timeline__bar-fill" aria-hidden="true"></span>
-                <span class="timeline__label"><?= h($item["role"]["title"]) ?></span>
-                <span class="timeline__dates"><?= h($item["role"]["dates"]) ?></span>
-              </div>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      </details>
-    </aside>
+    <?php include __DIR__ . '/../partials/experience_timeline.php'; ?>
   </div>
 </section>
