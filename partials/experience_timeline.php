@@ -52,25 +52,39 @@ if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutab
 
 $monthDots = [];
 $yearDots = [];
-$monthCount = 0;
+$months = [];
 if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable) {
   $cursor = $minStart->modify('first day of this month');
   while ($cursor <= $maxEnd) {
-    $pctFromTop = (($maxEnd->getTimestamp() - $cursor->getTimestamp()) / $rangeSeconds) * 100;
-    if ($cursor->format('m') === '01') {
-      $yearDots[] = [
-        "pct" => $pctFromTop,
-        "label" => $cursor->format('Y'),
-      ];
-    } else {
-      $monthDots[] = ["pct" => $pctFromTop];
-    }
-    $monthCount++;
+    $months[] = [
+      "date" => $cursor,
+      "isYear" => $cursor->format('m') === '01',
+      "label" => $cursor->format('Y'),
+    ];
     $cursor = $cursor->modify('+1 month');
   }
 }
 
-$timelineHeight = max(280, $monthCount * 12);
+$monthSpacing = 14;
+$monthCount = count($months);
+$timelineHeight = max(280, max(0, $monthCount - 1) * $monthSpacing + 20);
+$scale = 0.0;
+if ($rangeSeconds > 0 && $monthCount > 1) {
+  $scale = (max(0, $monthCount - 1) * $monthSpacing) / $rangeSeconds;
+}
+$monthIndex = 0;
+foreach ($months as $month) {
+  $posPx = ($monthCount - 1 - $monthIndex) * $monthSpacing;
+  if ($month["isYear"]) {
+    $yearDots[] = [
+      "pos" => $posPx,
+      "label" => $month["label"],
+    ];
+  } else {
+    $monthDots[] = ["pos" => $posPx];
+  }
+  $monthIndex++;
+}
 $roleCount = max(1, count($timeline));
 
 ?>
@@ -85,11 +99,11 @@ $roleCount = max(1, count($timeline));
       <div class="timeline__track" aria-hidden="true">
         <?php foreach ($monthDots as $dot): ?>
           <span class="timeline__dot timeline__dot--month"
-                style="--pos: <?= number_format($dot["pct"], 2, '.', '') ?>;"></span>
+                style="--pos: <?= number_format($dot["pos"], 2, '.', '') ?>;"></span>
         <?php endforeach; ?>
         <?php foreach ($yearDots as $dot): ?>
           <span class="timeline__dot timeline__dot--year"
-                style="--pos: <?= number_format($dot["pct"], 2, '.', '') ?>;">
+                style="--pos: <?= number_format($dot["pos"], 2, '.', '') ?>;">
             <span class="timeline__dot-label"><?= h($dot["label"]) ?></span>
           </span>
         <?php endforeach; ?>
@@ -99,14 +113,14 @@ $roleCount = max(1, count($timeline));
             $end = $item["end"];
             $startPos = 0.0;
             $spanPct = 0.0;
-            if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable) {
-              $startPos = (($maxEnd->getTimestamp() - $end->getTimestamp()) / $rangeSeconds) * 100;
-              $spanPct = (($end->getTimestamp() - $start->getTimestamp()) / $rangeSeconds) * 100;
+            if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable && $scale > 0) {
+              $startPos = ($maxEnd->getTimestamp() - $end->getTimestamp()) * $scale;
+              $spanPct = ($end->getTimestamp() - $start->getTimestamp()) * $scale;
             }
-            $spanPct = max($spanPct, 1.5);
+            $spanPct = max($spanPct, 8.0);
             $hue = (int) round(($item["index"] * (360 / $roleCount)) % 360);
             $color = "hsl(" . $hue . ", 70%, 40%)";
-            $offset = max(0.0, (12.0 * (1 - min(1.0, $spanPct / 100))));
+            $offset = max(0.0, (12.0 * (1 - min(1.0, $spanPct / $timelineHeight))));
             $lane = $item["index"] % 4;
             $laneOffset = $lane * 8;
             $labelOffsets = [-18, -6, 6, 18];
