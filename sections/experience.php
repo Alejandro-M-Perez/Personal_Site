@@ -44,8 +44,8 @@ $parseRange = static function (string $dates) use ($parseDate): array {
 };
 
 usort($roles, static function (array $a, array $b) use ($parseRange): int {
-  [$startA] = $parseRange($a["dates"]);
-  [$startB] = $parseRange($b["dates"]);
+  [$startA, $endA] = $parseRange($a["dates"]);
+  [$startB, $endB] = $parseRange($b["dates"]);
   if (!$startA && !$startB) {
     return 0;
   }
@@ -55,7 +55,15 @@ usort($roles, static function (array $a, array $b) use ($parseRange): int {
   if (!$startB) {
     return -1;
   }
-  return $startA <=> $startB;
+  // Newest experience first.
+  $cmp = $startB <=> $startA;
+  if ($cmp !== 0) {
+    return $cmp;
+  }
+  if ($endA && $endB) {
+    return $endB <=> $endA;
+  }
+  return 0;
 });
 
 ?>

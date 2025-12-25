@@ -215,7 +215,7 @@ body{
 
 .timeline__segment{
   position: absolute;
-  left: 6px;
+  left: calc(6px + var(--seg-offset, 0px));
   right: 0;
   top: calc(var(--start) * 1%);
   height: calc(var(--span) * 1%);
@@ -240,6 +240,17 @@ body{
   font-size: 0.78rem;
   line-height: 1.15;
   color: #111;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline__segment-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--seg-color);
+  display: inline-block;
 }
 
 @media (max-width: 900px){
