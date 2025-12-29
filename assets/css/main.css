@@ -246,7 +246,7 @@ body{
 
 .timeline__segment-label{
   position: absolute;
-  left: 26px;
+  left: 52px;
   top: 50%;
   transform: translateY(calc(-50% + var(--label-offset, 0px)));
   font-size: 0.78rem;
@@ -262,9 +262,9 @@ body{
 .timeline__segment-label::before{
   content: "";
   position: absolute;
-  left: -20px;
+  left: -40px;
   top: 50%;
-  width: 18px;
+  width: 36px;
   height: 2px;
   background: var(--seg-color);
   transform: translateY(-50%);
