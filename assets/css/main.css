@@ -246,7 +246,7 @@ body{
 
 .timeline__segment-label{
   position: absolute;
-  left: 12px;
+  left: 26px;
   top: 50%;
   transform: translateY(calc(-50% + var(--label-offset, 0px)));
   font-size: 0.78rem;
@@ -255,6 +255,19 @@ body{
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding-left: 6px;
+  z-index: 1;
+}
+
+.timeline__segment-label::before{
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 18px;
+  height: 2px;
+  background: var(--seg-color);
+  transform: translateY(-50%);
 }
 
 .timeline__segment-dot{
