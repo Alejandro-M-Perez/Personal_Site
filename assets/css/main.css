@@ -144,7 +144,7 @@ body{
 }
 
 .experience-timeline{
-  flex: 0 0 360px;
+  flex: 0 0 414px;
   display: flex;
   align-self: stretch;
   height: var(--page-height, 100vh);
