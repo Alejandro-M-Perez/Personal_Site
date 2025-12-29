@@ -14,7 +14,12 @@ $roles = [
   ],
   [
     "title" => "UTSA Robotics & Automation Society — President",
-    "dates" => "10/09/2023 – Present",
+    "dates" => "08/12/2024 – Present",
+    "body"  => "Grew the organization and led officers delivering projects and workshops to members; incorporated as a 501(c)(3) and managed finances with budgets and balance sheets."
+  ],
+  [
+    "title" => "UTSA Robotics & Automation Society — Treasurer",
+    "dates" => "10/09/2023 – 08/12/2024",
     "body"  => "Grew the organization and led officers delivering projects and workshops to members; incorporated as a 501(c)(3) and managed finances with budgets and balance sheets."
   ],
   [
