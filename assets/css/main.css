@@ -147,6 +147,7 @@ body{
   flex: 0 0 360px;
   display: flex;
   align-self: stretch;
+  height: var(--page-height, 100vh);
 }
 
 .timeline-panel{
@@ -177,6 +178,7 @@ body{
   flex-direction: column;
   overflow-y: auto;
   min-height: 0;
+  height: 100%;
 }
 
 .timeline__range{
@@ -190,6 +192,7 @@ body{
   position: relative;
   flex: 1;
   min-height: 0;
+  height: 100%;
   border-left: 2px solid #000;
   margin-top: 10px;
   padding-left: 18px;
