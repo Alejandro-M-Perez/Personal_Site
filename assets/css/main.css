@@ -131,6 +131,11 @@ body{
   display:flex;
   gap: 24px;
   align-items: stretch;
+  min-height: 100%;
+}
+
+.experience-section{
+  min-height: 100vh;
 }
 
 .experience-main{
@@ -171,6 +176,7 @@ body{
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  min-height: 0;
 }
 
 .timeline__range{
@@ -182,7 +188,8 @@ body{
 
 .timeline__track{
   position: relative;
-  height: var(--timeline-height, 320px);
+  flex: 1;
+  min-height: 0;
   border-left: 2px solid #000;
   margin-top: 10px;
   padding-left: 18px;
@@ -191,7 +198,7 @@ body{
 .timeline__dot{
   position: absolute;
   left: -5px;
-  top: calc(var(--pos) * 1px);
+  top: calc(var(--pos) * 1%);
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -218,8 +225,8 @@ body{
   position: absolute;
   left: calc(6px + var(--seg-offset, 0px) + var(--lane-offset, 0px));
   right: 0;
-  top: calc(var(--start) * 1px);
-  height: calc(var(--span) * 1px);
+  top: calc(var(--start) * 1%);
+  height: calc(var(--span) * 1%);
   min-height: 14px;
 }
 
@@ -257,6 +264,7 @@ body{
 @media (max-width: 900px){
   .experience-layout{
     flex-direction: column;
+    min-height: 0;
   }
 
   .experience-timeline{
@@ -267,6 +275,10 @@ body{
   .timeline-panel{
     position: static;
     height: auto;
+  }
+
+  .experience-section{
+    min-height: 0;
   }
 }
 

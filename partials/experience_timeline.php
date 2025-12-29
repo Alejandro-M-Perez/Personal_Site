@@ -65,25 +65,19 @@ if ($minStart instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutab
   }
 }
 
-$monthSpacing = 14;
-$monthCount = count($months);
-$timelineHeight = max(280, max(0, $monthCount - 1) * $monthSpacing + 20);
-$scale = 0.0;
-if ($rangeSeconds > 0 && $monthCount > 1) {
-  $scale = (max(0, $monthCount - 1) * $monthSpacing) / $rangeSeconds;
-}
-$monthIndex = 0;
 foreach ($months as $month) {
-  $posPx = ($monthCount - 1 - $monthIndex) * $monthSpacing;
+  $posPct = 0.0;
+  if ($maxEnd instanceof DateTimeImmutable && $rangeSeconds > 0) {
+    $posPct = (($maxEnd->getTimestamp() - $month["date"]->getTimestamp()) / $rangeSeconds) * 100;
+  }
   if ($month["isYear"]) {
     $yearDots[] = [
-      "pos" => $posPx,
+      "pos" => $posPct,
       "label" => $month["label"],
     ];
   } else {
-    $monthDots[] = ["pos" => $posPx];
+    $monthDots[] = ["pos" => $posPct];
   }
-  $monthIndex++;
 }
 $roleCount = max(1, count($timeline));
 
@@ -91,7 +85,7 @@ $roleCount = max(1, count($timeline));
 <aside class="experience-timeline">
   <details class="timeline-panel" open>
     <summary>Timeline</summary>
-    <div class="timeline" style="--timeline-height: <?= (int) $timelineHeight ?>px;">
+    <div class="timeline">
       <div class="timeline__range">
         <span><?= $minStart ? h($minStart->format('M Y')) : 'Start' ?></span>
         <span><?= $maxEnd ? h($maxEnd->format('M Y')) : 'Present' ?></span>
@@ -113,14 +107,13 @@ $roleCount = max(1, count($timeline));
             $end = $item["end"];
             $startPos = 0.0;
             $spanPct = 0.0;
-            if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable && $scale > 0) {
-              $startPos = ($maxEnd->getTimestamp() - $end->getTimestamp()) * $scale;
-              $spanPct = ($end->getTimestamp() - $start->getTimestamp()) * $scale;
+            if ($start instanceof DateTimeImmutable && $end instanceof DateTimeImmutable && $maxEnd instanceof DateTimeImmutable && $rangeSeconds > 0) {
+              $startPos = (($maxEnd->getTimestamp() - $end->getTimestamp()) / $rangeSeconds) * 100;
+              $spanPct = (($end->getTimestamp() - $start->getTimestamp()) / $rangeSeconds) * 100;
             }
-            $spanPct = max($spanPct, 8.0);
             $hue = (int) round(($item["index"] * (360 / $roleCount)) % 360);
             $color = "hsl(" . $hue . ", 70%, 40%)";
-            $offset = max(0.0, (12.0 * (1 - min(1.0, $spanPct / $timelineHeight))));
+            $offset = max(0.0, (12.0 * (1 - min(1.0, $spanPct / 100.0))));
             $lane = $item["index"] % 4;
             $laneOffset = $lane * 8;
             $labelOffsets = [-18, -6, 6, 18];
