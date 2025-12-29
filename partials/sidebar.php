@@ -9,6 +9,9 @@ declare(strict_types=1);
       <div class="sidebar__name"><?= h($SITE["name"]) ?></div>
       <div class="sidebar__meta"><?= h($SITE["location"]) ?></div>
     </div>
+    <button class="sidebar__toggle" type="button" aria-expanded="true" aria-label="Toggle sidebar">
+      <span aria-hidden="true">|||</span>
+    </button>
   </div>
 
   <nav class="sidebar__nav">

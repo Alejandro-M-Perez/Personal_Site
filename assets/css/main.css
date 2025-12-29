@@ -1,6 +1,7 @@
 :root{
   --paper-width: 980px;
   --sidebar-width: 220px;
+  --sidebar-collapsed-width: 64px;
   --rule: #000;
   --rule-light: #bdbdbd;
 }
@@ -29,6 +30,11 @@ body{
   height: 100vh;
 }
 
+.layout.is-sidebar-collapsed .sidebar{
+  width: var(--sidebar-collapsed-width);
+  padding: 18px 10px;
+}
+
 .sidebar__brand{
   display:flex;
   gap: 10px;
@@ -36,11 +42,34 @@ body{
   margin-bottom: 18px;
 }
 
+.sidebar__toggle{
+  margin-left: auto;
+  border: 1px solid var(--rule-light);
+  background: #fff;
+  font: inherit;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.sidebar__toggle:hover{
+  border-color: #000;
+}
+
+.layout.is-sidebar-collapsed .sidebar__brand{
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
 .sidebar__monogram{
   width:44px; height:44px;
   border:1px solid #000;
   display:flex; align-items:center; justify-content:center;
   font-weight:700;
+}
+
+.layout.is-sidebar-collapsed .sidebar__brandtext{
+  display: none;
 }
 
 .sidebar__name{ font-weight:700; }
@@ -53,6 +82,10 @@ body{
   margin-top: 10px;
 }
 
+.layout.is-sidebar-collapsed .sidebar__nav{
+  align-items: center;
+}
+
 .navitem{
   display:flex;
   align-items:center;
@@ -61,6 +94,15 @@ body{
   text-decoration:none;
   color:#000;
   border: 1px solid transparent;
+}
+
+.layout.is-sidebar-collapsed .navitem{
+  justify-content: center;
+  width: 100%;
+}
+
+.layout.is-sidebar-collapsed .navitem__label{
+  display: none;
 }
 
 .navitem:hover{
@@ -83,6 +125,10 @@ body{
   right: 14px;
   font-size: 0.95rem;
   color:#111;
+}
+
+.layout.is-sidebar-collapsed .sidebar__footer{
+  display: none;
 }
 
 .content{
