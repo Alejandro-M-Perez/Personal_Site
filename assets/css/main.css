@@ -148,6 +148,7 @@ body{
   display: flex;
   align-self: stretch;
   height: var(--page-height, 100vh);
+  padding-bottom: 24px;
 }
 
 .timeline-panel{
@@ -192,8 +193,8 @@ body{
   position: relative;
   flex: 1;
   min-height: 0;
-  height: 100%;
-  min-height: var(--page-height, 100vh);
+  height: calc(var(--page-height, 100vh) - 24px);
+  min-height: calc(var(--page-height, 100vh) - 24px);
   border-left: 2px solid #000;
   margin-top: 10px;
   padding-left: 18px;
@@ -248,7 +249,7 @@ body{
   position: absolute;
   left: 52px;
   top: 100%;
-  transform: translateY(calc(-6px + var(--label-offset, 0px)));
+  transform: translateY(calc(-100% + 2px + var(--label-offset, 0px)));
   font-size: 0.78rem;
   line-height: 1.15;
   color: #111;
