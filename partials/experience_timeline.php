@@ -87,8 +87,9 @@ $roleCount = max(1, count($timeline));
     <summary>Timeline</summary>
     <div class="timeline">
       <div class="timeline__range">
-        <span><?= $minStart ? h($minStart->format('M Y')) : 'Start' ?></span>
-        <span><?= $maxEnd ? h($maxEnd->format('M Y')) : 'Present' ?></span>
+        <span><?= $minStart ? h($minStart->format('M Y')) : 'MinStart' ?></span>
+        <span>to</span>
+        <span><?= $maxEnd ? h($maxEnd->format('M Y')) : 'MaxEnd' ?></span>
       </div>
       <div class="timeline__track" aria-hidden="true">
         <?php foreach ($monthDots as $dot): ?>
