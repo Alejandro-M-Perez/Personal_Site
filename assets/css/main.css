@@ -161,6 +161,21 @@ body{
 }
 
 .layout.is-sidebar-collapsed .sidebar__footer{
+  display: block;
+  left: 8px;
+  right: 8px;
+}
+
+.layout.is-sidebar-collapsed .sidebar__actions{
+  justify-items: center;
+}
+
+.layout.is-sidebar-collapsed .sidebar__button{
+  justify-content: center;
+  padding: 6px;
+}
+
+.layout.is-sidebar-collapsed .sidebar__button-label{
   display: none;
 }
 
