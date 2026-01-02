@@ -190,6 +190,17 @@ body{
   margin: 0 auto 24px auto;
 }
 
+.about-actions{
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.about-actions__item{
+  border: 1px solid var(--rule-light);
+}
+
 .photo-banner__image{
   display: block;
   width: 100%;

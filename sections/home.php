@@ -25,4 +25,27 @@ declare(strict_types=1);
     and machine learning. This site is formatted to present research, projects, and
     artifacts (papers, videos, pictures, & code).
   </p>
+  <div class="about-actions">
+    <a class="navitem about-actions__item" href="?s=home">
+      <img class="navitem__icon"
+           src="<?= $SITE["assets_base"] ?>/img/icons/home.svg"
+           alt=""
+           aria-hidden="true" />
+      <span class="navitem__label">Home</span>
+    </a>
+    <a class="navitem about-actions__item" href="?s=research">
+      <img class="navitem__icon"
+           src="<?= $SITE["assets_base"] ?>/img/icons/research.svg"
+           alt=""
+           aria-hidden="true" />
+      <span class="navitem__label">Research</span>
+    </a>
+    <a class="navitem about-actions__item" href="?s=experience">
+      <img class="navitem__icon"
+           src="<?= $SITE["assets_base"] ?>/img/icons/experience.svg"
+           alt=""
+           aria-hidden="true" />
+      <span class="navitem__label">Experience</span>
+    </a>
+  </div>
 </section>
