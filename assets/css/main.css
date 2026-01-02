@@ -105,6 +105,10 @@ body{
   display: none;
 }
 
+.layout.is-sidebar-collapsed .about-actions .navitem__label{
+  display: inline;
+}
+
 .navitem:hover{
   border-color: var(--rule-light);
 }
