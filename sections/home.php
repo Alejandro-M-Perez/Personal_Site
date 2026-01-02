@@ -13,7 +13,9 @@ declare(strict_types=1);
 </header>
 
 <section class="paper-section photo-banner">
-  <div class="photo-banner__placeholder">Photo banner placeholder</div>
+  <img class="photo-banner__image"
+       src="<?= $SITE["assets_base"] ?>/img/photo-banner.jpg"
+       alt="Photo banner" />
 </section>
 
 <section class="paper-section">

@@ -31,33 +31,33 @@ declare(strict_types=1);
 
   <div class="sidebar__footer">
     <div class="sidebar__actions">
-      <a class="sidebar__button" href="mailto:alejandromperez714@gmail.com">
-        <img class="sidebar__icon"
+      <a class="navitem" href="mailto:alejandromperez714@gmail.com">
+        <img class="navitem__icon"
              src="<?= $SITE["assets_base"] ?>/img/icons/email.svg"
              alt=""
              aria-hidden="true" />
-        <span class="sidebar__button-label">Email</span>
+        <span class="navitem__label">Email</span>
       </a>
-      <a class="sidebar__button" href="https://www.linkedin.com/in/alejandromperez714/" target="_blank" rel="noreferrer">
-        <img class="sidebar__icon"
+      <a class="navitem" href="https://www.linkedin.com/in/alejandromperez714/" target="_blank" rel="noreferrer">
+        <img class="navitem__icon"
              src="<?= $SITE["assets_base"] ?>/img/icons/linkedin.svg"
              alt=""
              aria-hidden="true" />
-        <span class="sidebar__button-label">LinkedIn</span>
+        <span class="navitem__label">LinkedIn</span>
       </a>
-      <a class="sidebar__button" href="https://www.youtube.com/@AMP_Engineering" target="_blank" rel="noreferrer">
-        <img class="sidebar__icon"
+      <a class="navitem" href="https://www.youtube.com/@AMP_Engineering" target="_blank" rel="noreferrer">
+        <img class="navitem__icon"
              src="<?= $SITE["assets_base"] ?>/img/icons/youtube.svg"
              alt=""
              aria-hidden="true" />
-        <span class="sidebar__button-label">YouTube</span>
+        <span class="navitem__label">YouTube</span>
       </a>
-      <a class="sidebar__button" href="https://github.com/Alejandro-M-Perez" target="_blank" rel="noreferrer">
-        <img class="sidebar__icon"
+      <a class="navitem" href="https://github.com/Alejandro-M-Perez" target="_blank" rel="noreferrer">
+        <img class="navitem__icon"
              src="<?= $SITE["assets_base"] ?>/img/icons/github.svg"
              alt=""
              aria-hidden="true" />
-        <span class="sidebar__button-label">GitHub</span>
+        <span class="navitem__label">GitHub</span>
       </a>
     </div>
   </div>
