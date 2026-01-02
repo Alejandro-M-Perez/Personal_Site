@@ -132,7 +132,7 @@ body{
   gap: 8px;
 }
 
-.sidebar__button{
+.sidebar__actions .sidebar__button{
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -145,14 +145,19 @@ body{
   font-size: 0.9rem;
 }
 
-.sidebar__icon{
-  width: 0.9em;
-  height: 0.9em;
+.sidebar__actions .sidebar__button:visited{
   color: #000;
-  flex: 0 0 auto;
 }
 
-.sidebar__button:hover{
+.sidebar__actions .sidebar__icon{
+  width: 1em;
+  height: 1em;
+  color: #000;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.sidebar__actions .sidebar__button:hover{
   background:#f5f5f5;
 }
 
