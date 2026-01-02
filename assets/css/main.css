@@ -127,6 +127,35 @@ body{
   color:#111;
 }
 
+.sidebar__actions{
+  display: grid;
+  gap: 8px;
+}
+
+.sidebar__button{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 6px 8px;
+  border: 1px solid #000;
+  color: #000;
+  text-decoration: none;
+  background: #fff;
+  font-size: 0.9rem;
+}
+
+.sidebar__icon{
+  width: 16px;
+  height: 16px;
+  color: #000;
+  flex: 0 0 auto;
+}
+
+.sidebar__button:hover{
+  background:#f5f5f5;
+}
+
 .layout.is-sidebar-collapsed .sidebar__footer{
   display: none;
 }
