@@ -35,7 +35,7 @@ $activeSection = $SECTIONS[$activeKey];
 require __DIR__ . '/partials/head.php';
 ?>
 <body>
-  <div class="layout">
+  <div class="layout is-sidebar-collapsed">
     <?php require __DIR__ . '/partials/sidebar.php'; ?>
 
     <main class="content" role="main">
