@@ -146,8 +146,8 @@ body{
 }
 
 .sidebar__icon{
-  width: 16px;
-  height: 16px;
+  width: 0.9em;
+  height: 0.9em;
   color: #000;
   flex: 0 0 auto;
 }

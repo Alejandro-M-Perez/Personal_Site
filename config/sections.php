@@ -17,9 +17,4 @@ return [
     "icon"  => "experience.svg",
     "file"  => "experience.php",
   ],
-  "education" => [
-    "title" => "Education",
-    "icon"  => "education.svg",
-    "file"  => "education.php",
-  ],
 ];
