@@ -9,6 +9,7 @@ $projects = [
     "links" => [
       ["label" => "Download Paper", "href" => "/downloads/AIPM_Study-3.pdf"],
       ["label" => "View Project",   "href" => "/projects/ai-project-manager"],
+      ["label" => "Download Code",      "href" => "https://github.com/AIConLab/ai-pm"],
     ],
     "media" => [
       ["type" => "pdf", "src" => "/downloads/AIPM_Study-3.pdf", "label" => "AI Project Manager paper preview"],
@@ -19,8 +20,6 @@ $projects = [
     "body"  => "Worked with Dr. Cai and a PhD student to develop a simulated environment for a mobile manipulator to train brick-laying behavior. Included point cloud and RGB data to simulate an RGB-D camera. Wrote a Python script using OpenGL to extract and save data for training; developed a control system using simulation data.",
     "links" => [
       ["label" => "Download Lab Notes", "href" => "/downloads/AIcon Lab Weekly Reports.pdf"],
-      ["label" => "Download Code",      "href" => "https://github.com/AIConLab/ai-pm"],
-      ["label" => "View Dataset",   "href" => "/projects/ai-construction-lab"],
     ],
     "media" => [
       ["type" => "pdf", "src" => "/downloads/AIcon Lab Weekly Reports.pdf", "label" => "AI Construction Lab notes preview"],
