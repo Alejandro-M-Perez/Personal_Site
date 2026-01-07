@@ -7,3 +7,6 @@ to do:
 
 Ideas:
 - use this font https://www.1001fonts.com/nimbus-mono-font.html
+
+Notes:
+- https://fluentemoji.com/ -emoji source
