@@ -12,6 +12,11 @@ return [
     "icon"  => "research.svg",
     "file"  => "research.php",
   ],
+  "projects" => [
+    "title" => "GitHub Projects",
+    "icon"  => "github.svg",
+    "file"  => "projects.php",
+  ],
   "experience" => [
     "title" => "Experience",
     "icon"  => "experience.svg",
