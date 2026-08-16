@@ -1,0 +1,265 @@
+/*
+Theme Name: AMP Engineering Portfolio
+Theme URI: https://amp-engr.com/
+Author: Alejandro Perez
+Description: A lightweight block theme for an engineering and research portfolio.
+Version: 1.0.0
+Requires at least: 6.6
+Requires PHP: 8.1
+Text Domain: amp-portfolio
+License: GPL-2.0-or-later
+*/
+
+:root {
+  --amp-paper: #fff;
+  --amp-ink: #111;
+  --amp-muted: #595959;
+  --amp-line: #b8b8b8;
+  --amp-soft: #f4f4f2;
+  --amp-accent: #183a59;
+  --amp-sidebar: 15rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  overflow-x: hidden;
+  background: var(--amp-paper);
+  color: var(--amp-ink);
+}
+
+a {
+  color: var(--amp-accent);
+  text-underline-offset: 0.16em;
+}
+
+a:hover { text-decoration-thickness: 0.12em; }
+
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid #1b6ca8;
+  outline-offset: 3px;
+}
+
+.wp-site-blocks {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--amp-sidebar) minmax(0, 1fr);
+}
+
+.amp-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 100vh;
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--amp-line);
+  background: var(--amp-paper);
+}
+
+.amp-site-header .wp-block-site-title { margin: 0; }
+
+.amp-site-header .wp-block-navigation {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.amp-site-header .wp-block-navigation__container {
+  width: 100%;
+  gap: 0.35rem;
+}
+
+.amp-site-header .wp-block-navigation-item { width: 100%; }
+
+.amp-site-header .wp-block-navigation-item__content {
+  width: 100%;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid transparent;
+  color: var(--amp-ink);
+  text-decoration: none;
+}
+
+.amp-site-header .current-menu-item > .wp-block-navigation-item__content,
+.amp-site-header .wp-block-navigation-item__content:hover {
+  border-color: var(--amp-ink);
+}
+
+.amp-main {
+  min-width: 0;
+  width: 100%;
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.amp-paper-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--amp-line);
+  text-align: center;
+}
+
+.amp-paper-header .wp-block-post-title,
+.amp-paper-header h1 {
+  overflow-wrap: anywhere;
+  margin-bottom: 0.4rem;
+}
+
+.amp-contact-line {
+  color: var(--amp-muted);
+  font-size: 0.98rem;
+}
+
+.amp-hero-image {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.amp-hero-image img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--amp-line);
+}
+
+.amp-entry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.amp-card {
+  height: 100%;
+  padding: 1.1rem;
+  border: 1px solid var(--amp-line);
+  background: var(--amp-paper);
+}
+
+.amp-card .wp-block-post-title { margin-top: 0; }
+
+.amp-card .wp-block-post-featured-image img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.amp-meta {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid var(--amp-line);
+  background: var(--amp-soft);
+}
+
+.amp-meta dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.45rem 1rem;
+  margin: 0;
+}
+
+.amp-meta dt { font-weight: 700; }
+.amp-meta dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+
+.amp-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.amp-button,
+.wp-element-button {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--amp-ink);
+  border-radius: 0;
+  background: var(--amp-paper);
+  color: var(--amp-ink);
+  text-decoration: none;
+}
+
+.amp-button:hover,
+.wp-element-button:hover { background: var(--amp-soft); }
+
+.amp-site-footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--amp-line);
+  text-align: center;
+}
+
+.amp-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1rem;
+}
+
+.amp-social-links a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.amp-skip-link {
+  position: fixed;
+  z-index: 9999;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-200%);
+  background: var(--amp-ink);
+  color: #fff;
+}
+
+.amp-skip-link:focus { transform: translateY(0); }
+
+@media (max-width: 782px) {
+  .wp-site-blocks { display: block; }
+
+  .amp-site-header {
+    position: sticky;
+    height: auto;
+    padding: 0.75rem 1rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--amp-line);
+  }
+
+  .amp-site-header > .wp-block-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .amp-site-header .wp-block-navigation { width: auto; margin-top: 0; }
+
+  .amp-site-header .wp-block-navigation__responsive-container.is-menu-open {
+    padding: 1.25rem;
+    background: var(--amp-paper);
+  }
+
+  .amp-main { padding: 1.25rem; }
+  .amp-entry-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .amp-main { padding-inline: 1rem; }
+  .amp-paper-header { text-align: left; }
+  .amp-meta dl { grid-template-columns: 1fr; gap: 0.1rem; }
+  .amp-meta dd { margin-bottom: 0.6rem; }
+  .amp-button-row > * { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

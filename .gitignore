@@ -1,0 +1,47 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+wp-config.php
+
+# Databases, backups, and server artifacts
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.bak
+*.backup
+*.log
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+backups/
+logs/
+
+# WordPress runtime (only custom source belongs in Git)
+wordpress/
+wp-admin/
+wp-includes/
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup*/
+wp-content/plugins/*
+!wp-content/plugins/amp-portfolio-core/
+wp-content/themes/*
+!wp-content/themes/amp-portfolio/
+
+# Tooling and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+vendor/
+node_modules/
+.phpunit.result.cache

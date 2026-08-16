@@ -1,0 +1,11 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "amp/portfolio-meta",
+  "version": "1.0.0",
+  "title": "Portfolio Metadata",
+  "category": "theme",
+  "description": "Displays the structured links and details for a Project or Research entry.",
+  "supports": { "html": false, "inserter": false },
+  "render": "file:./render.php"
+}
